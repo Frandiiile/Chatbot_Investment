@@ -2,10 +2,11 @@ def process_message(message):
   from transformers import AutoTokenizer, AutoModelForSequenceClassification
   from scipy.special import softmax
   import numpy as np
+  roberta = "cardiffnlp/twitter-roberta-base-sentiment"
   model = AutoModelForSequenceClassification.from_pretrained(roberta)
   tokenizer = AutoTokenizer.from_pretrained(roberta)
   labels = ['Negative', 'Neutral', 'Positive']
-  roberta = "cardiffnlp/twitter-roberta-base-sentiment"
+
   encoded_message = tokenizer(message, return_tensors='pt')
   output = model(**encoded_message)
 
